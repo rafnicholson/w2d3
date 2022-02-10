@@ -44,8 +44,12 @@ class Battleship
     end 
 
     def turn 
-        @player.get_move
-        self.attack
+        move = @player.get_move
+        if @board.attack(move) == false
+            @remaining_misses -= 1
+        end 
+        @board.print  
+        puts "Remaining Spaces: #{@remaining_misses}"
     end 
 
 end
